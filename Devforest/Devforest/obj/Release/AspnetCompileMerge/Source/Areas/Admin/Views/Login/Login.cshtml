@@ -1,0 +1,153 @@
+﻿
+@model Devforest.Areas.Admin.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+  
+    <link href="~/Content/maincss/style.default.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    <style>
+        .field-validation-error {
+            margin-top: 4px;
+            padding: 0;
+        }
+
+            .field-validation-error span {
+                padding: 0;
+                list-style: none;
+                color: #cc0000;
+            }
+
+        .input-validation-error {
+            border-color: #c00 !important;
+        }
+    </style>
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#divMsg').fadeOut(1500);
+        }, 3000)
+    </script>
+</head>
+<body class="signin">
+    <section>
+
+        <div class="signinpanel">
+
+            <div class="row">
+                @if (ViewBag.Status != "success")
+                {
+                    <div id="divMsg" class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Warning!</strong> @ViewBag.Status !!!
+                    </div>
+                }
+                <!-- col-sm-7 -->
+
+                <div class="col-md-5 col-md-offset-3">
+
+                    @using (Html.BeginForm("ValidateUser", "Login"))
+                    {
+                        <h4 class="nomargin">Sign In</h4>
+                        <p class="mt5 mb20">Login to access your account.</p>
+
+                        @Html.TextBoxFor(m => m.Email, new { id = "txtUserName", @class = "form-control uname", placeholder = "Username" })
+                        @Html.ValidationMessageFor(m => m.Email)
+
+                        @Html.TextBoxFor(m => m.Password, new { id = "txtPassword", @class = "form-control pword", placeholder = "Password", type = "password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                        <br />
+                        <a href="#myModal" data-toggle="modal">I forgot my password</a><br>
+
+                        <input type="submit" class="btn btn-success btn-block" value="Sign In" />
+                    }
+                </div><!-- col-sm-5 -->
+
+            </div><!-- row -->
+
+            <div class="signup-footer">
+                <div class="pull-left">
+                    &copy; 2017. All Rights Reserved.
+                </div>
+                <div class="pull-right">
+                    Created By: <a href="http://themepixels.com/" target="_blank">Devloper Forest</a>
+                </div>
+            </div>
+
+        </div><!-- signin -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModal-label">Forgot Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="panel-body panel4">
+                                
+                                <div class="col-sm-12" id="divEmail">
+                                    <form class=" form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2">Email ID<span class="asterisk">*</span></label>
+                                            <div class="col-sm-7">
+                                                @Html.TextBox("txtMailForgot",null, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="panel-body " style="margin: -13px;">
+                            <div class="col-sm-12">
+                                <a href="#" id="btnSubmit" class="btn btn-primary" onclick="SendMailForgotPwd();">Submit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function SendMailForgotPwd() {
+            var Mail = $('#txtMailForgot').val();
+            if (Mail != "" ) {
+                $.ajax({
+                    type: "POST",
+                    url: "Login/ResetCode",
+                    data: '{Mail:"' + Mail + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.d == "1") {
+                            alert("Password Change Successfully");
+                            $('#myModal').modal('hide');
+                        }
+                        else {
+                            alert("Entered Code Is Not Correct");
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Fill All Required Fields");
+            }
+        }
+    </script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/misc")
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using DeveloperForest.BLL;
+using Devforest.Areas.Admin.Models;
+
+namespace Devforest.Areas.Admin.Models
+{
+    public class ThemeHelper
+    {
+        Theme objBLL = new Theme();
+        public int InsertTheme(ThemeModel model, string ImageName)
+        {
+            DeveloperForest.Model.ThemeModel obj = new DeveloperForest.Model.ThemeModel();
+            obj.ThemeId = model.ThemeId;
+            obj.CategoryId = model.CategoryId;
+            obj.SubCategoryId = model.SubCategoryId;
+            obj.Title = model.Title;
+            obj.Description = model.Description;
+            obj.Downloadlink = model.Downloadlink;
+            obj.DemoLink = model.DemoLink;
+            obj.CreatedBy = model.UserID;
+            obj.ModifiedBy = model.UserID;
+            obj.ImageName = ImageName;
+            obj.RelatedLink1 = model.RelatedLink1;
+            obj.RelatedLink2 = model.RelatedLink2;
+            obj.RelatedLink3 = model.RelatedLink3;
+            obj.RelatedLink4 = model.RelatedLink4;
+            obj.RelatedLink5 = model.RelatedLink5;
+            return objBLL.InsertTheme(obj);
+        }
+
+        public List<DeveloperForest.Model.ThemeModel> GetThemes()
+        {
+
+            List<DeveloperForest.Model.ThemeModel> ob = objBLL.GetThemes();
+            return ob;
+        }
+        public DeveloperForest.Model.ThemeModel GetThemes(int ThemeId)
+        {
+            DeveloperForest.Model.ThemeModel ob = objBLL.GetThemes().Where(x => x.ThemeId == ThemeId).FirstOrDefault();
+            return ob;
+        }
+        public string DeleteThemeById(int id)
+        {
+            return objBLL.DeleteThemeById(id);
+        }
+    }
+}
