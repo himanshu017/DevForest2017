@@ -2,7 +2,7 @@
     var trgts = $('.mainnav__link:eq(0)').attr('trgt');
     var CategoryId = $('.mainnav__link:eq(0)').attr('data-id');
     console.log(CategoryId);
-    bindsubcategory(CategoryId);
+    bindsubcategory(CategoryId,trgts);
     console.log(trgts);
     if (trgts.replace("#", "").toUpperCase() == "THEME") {
         GetThemeLatest(0);
@@ -11,19 +11,21 @@
     $('.mainnav__link').click(function () {
         var trgts = $(this).attr('trgt');
         var CategoryId = $(this).attr('data-id');
-        bindsubcategory(CategoryId);
+        bindsubcategory(CategoryId,trgts);
 
     });
 
-    function bindsubcategory(CategoryId) {
+    function bindsubcategory(CategoryId, trgts) {
+        trgts = trgts.replace("#", "");
         $.ajax({
             cache: false,
             type: "POST",
             url: SubPath,
             data: { categoryid: CategoryId },
             success: function (data) {
-                $('#subnav').html('');
-                $('#subnav').html(data);
+               // $(".mainnav-row li div").hide();
+                $('#subnav_'+trgts).html('');
+                $('#subnav_' + trgts).html(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert('Failed subcategories.');

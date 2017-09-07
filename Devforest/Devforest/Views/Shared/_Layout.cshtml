@@ -15,30 +15,29 @@
     <div class="maincon">
 
         <div class="topsection">
-            <div class="parallax-background bannerbox__image"></div>
             <header class="header transition">
                 <div class="container">
                     <div class="header__container  flex items-center">
                         <a class="header__left navbar-brand narrow" href="#"><img src="~/assets/img/logo.png" alt=""></a>
+                        <div class="header__mid">
+                            <div class="bannerbox__search">
+                                <input type="text" placeholder="Search theme, template, videos,  music and Jobs" class="bannerbox__search--textfield">
+                                <a href="javascriipt:void(0)" class="bannerbox__search--button"><i class="df df-search2"></i></a>
+                            </div>
+                        </div>
                         <div class="header__right">
-
+                            <a class="toggle" href="javascript:void(0)">
+                                <i class="one"></i> <div class="clearfix"></div>
+                                <i class="two"></i> <div class="clearfix"></div>
+                                <i class="three"></i> <div class="clearfix"></div>
+                                <i class="four"></i> <div class="clearfix"></div>
+                                <span>MENU</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </header>
             @{Html.RenderAction("Category", "Home");}
-
-            <section class="bannerbox">
-
-                <div class="bannerbox__textarea">
-                    <div class="bannerbox__heading">Find Template,  Video, Music, Plugin and Jobs etc...</div>
-                    <div class="bannerbox__subheading">these collection developed by creative programmers,  which is perfect for your business</div>
-                    <div class="bannerbox__search">
-                        <input type="text" placeholder="Search theme, template, videos,  music and Jobs" class="bannerbox__search--textfield">
-                        <a href="javascriipt:void(0)" class="bannerbox__search--button"><i class="df df-search2"></i></a>
-                    </div>
-                </div>
-            </section>
         </div>
         @RenderBody()
         <footer class="footer">
@@ -117,7 +116,7 @@
             </div>
         </footer>
     </div>
-  
+
 
 
     @Scripts.Render("~/bundles/jquery")
