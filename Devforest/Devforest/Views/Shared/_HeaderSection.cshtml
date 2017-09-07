@@ -3,23 +3,27 @@
     ViewBag.Title = "_HeaderSection";
 }
 
-<div class="mainnav transition">
-    <div class="menuHeader">
-        <a href="#" class="closeMenu">X Close</a>
-    </div>
-    <ul class="mainnav-row">
-        @foreach (var item in Model.MainCategories)
+<div class="mainnav">
+    <div class="container">
+        <ul class="mainnav-row">
+            @foreach (var item in Model.MainCategories)
             {
-            <li class="mainnav__list">
-                <a class="@(item.CurrentIndex==1?"mainnav__link active":"mainnav__link")" data-id="@item.CategoryId" trgt="#@item.CategoryName" href="javascript:void(0)">
-                    <i class="mainnav__icon df @item.CSSClass"></i>
-                    <span class="mainnav__text">@item.CategoryName</span>
-                </a>
-                <div class="" id="subnav_@item.CategoryName">
+                <li class="mainnav__list">
 
-                </div>
-            </li>
-        }
-    </ul>
 
+                    <a class="@(item.CurrentIndex==1?"mainnav__link active":"mainnav__link")" data-id="@item.CategoryId" trgt="#@item.CategoryName" href="javascript:void(0)">
+                        <i class="mainnav__icon df @item.CSSClass"></i>
+                        <span class="mainnav__text">@item.CategoryName</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="subnav">
+    <div class="container" id="subnav">
+
+
+    </div>
 </div>
