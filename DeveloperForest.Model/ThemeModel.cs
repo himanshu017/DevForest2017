@@ -28,6 +28,12 @@ namespace DeveloperForest.Model
 
         public string BaseURL { get;set; }
 
+        public string FileSize { get; set; }
+        public int ViewsTotal { get; set; }
+        public string LastUpdate { get; set; }
+        public string PublishDate { get; set; }
+        public string OfficialWebsite { get; set; }
+        public string License { get; set; }
         public string RelatedLink1 { get; set; }
         public string RelatedLink2 { get; set; }
         public string RelatedLink3 { get; set; }
