@@ -132,6 +132,55 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
+                                                    <label class="control-label">File Size</label>
+                                                    @Html.TextBoxFor(m => m.FileSize, new { @class = "form-control", id = "txtFileSize", placeholder = "File Size" })
+                                                    @Html.ValidationMessageFor(m => m.FileSize)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Views Total</label>
+                                                    @Html.TextBoxFor(m => m.ViewsTotal, new { @class = "form-control", id = "txtViewsTotal", placeholder = "Views Total" })
+                                                    @Html.ValidationMessageFor(m => m.ViewsTotal)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Last Update</label>
+                                                    @Html.TextBoxFor(m => m.LastUpdate, new { @class = "form-control", id = "txtLastUpdate", placeholder = "Last Update" })
+                                                    @Html.ValidationMessageFor(m => m.LastUpdate)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Publish Date</label>
+                                                    @Html.TextBoxFor(m => m.PublishDate, new { @class = "form-control", id = "txtPublishDate", placeholder = "Publish Date" })
+                                                    @Html.ValidationMessageFor(m => m.PublishDate)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Official Website</label>
+                                                    @Html.TextBoxFor(m => m.OfficialWebsite, new { @class = "form-control", id = "txtOfficialWebsite", placeholder = "Official Website" })
+                                                    @Html.ValidationMessageFor(m => m.OfficialWebsite)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">License</label>
+                                                    @Html.TextBoxFor(m => m.License, new { @class = "form-control", id = "txtLicense", placeholder = "License" })
+                                                    @Html.ValidationMessageFor(m => m.License)
+                                                </div>
+                                            </div><!-- col-sm-6 -->
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
                                                     <label class="control-label">RelatedLink1</label>
                                                     @Html.TextBoxFor(m => m.RelatedLink1, new { @class = "form-control", id = "txtRelatedLink1", placeholder = "RelatedLink-1" })
                                                     
@@ -256,6 +305,14 @@
                     $('#txtDescription').val(data.Description);
                     $('#ThemeId').val(ThemeId);
                     $('#PreImageName').val(data.PreImageName);
+
+                    $('#txtFileSize').val(data.FileSize);
+                    $('#txtViewsTotal').val(data.ViewsTotal);
+                    $('#txtLastUpdate').val(data.LastUpdate);
+                    $('#txtPublishDate').val(data.PublishDate);
+                    $('#txtOfficialWebsite').val(data.OfficialWebsite);
+                    $('#txtLicense').val(data.License);
+
                     $('#txtRelatedLink1').val(data.RelatedLink1);
                     $('#txtRelatedLink2').val(data.RelatedLink2);
                     $('#txtRelatedLink3').val(data.RelatedLink3);
