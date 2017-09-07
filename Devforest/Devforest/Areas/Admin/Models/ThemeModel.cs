@@ -20,7 +20,7 @@ namespace Devforest.Areas.Admin.Models
         [Required]
         public string Title { get; set; }
 
-        [Required(ErrorMessage="The Image field is required")]
+        [Required(ErrorMessage = "The Image field is required")]
         public HttpPostedFileBase ImageName { get; set; }
 
         [Required(ErrorMessage = "The Image field is required")]
@@ -38,6 +38,13 @@ namespace Devforest.Areas.Admin.Models
         public SelectList SubCategoryList { get; set; }
 
         public string PreImageName { get; set; }
+
+        public string FileSize { get; set; }
+        public int ViewsTotal { get; set; }
+        public string LastUpdate { get; set; }
+        public string PublishDate { get; set; }
+        public string OfficialWebsite { get; set; }
+        public string License { get; set; }
 
         public string RelatedLink1 { get; set; }
         public string RelatedLink2 { get; set; }
