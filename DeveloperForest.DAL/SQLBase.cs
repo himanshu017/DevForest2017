@@ -14,7 +14,7 @@ namespace DeveloperForest.DAL
         public static string SQL_DeleteSubCategoriesById = "Delete from MasterSubCategory where SubCategoryID=@SubCategoryId";
         public static string SQL_GET_Themes = @"Select Themes.ThemeId,(Select CategoryName from MasterCategory where CategoryId= Themes.CategoryId) CategoryName,CategoryId,SubCategoryId,
 
-                                                (Select SubCategoryName from MasterSubCategory where SubCategoryId= Themes.SubCategoryId) SubCategoryName,Title,Description,DemoLink,
+                                                (Select SubCategoryName from MasterSubCategory where SubCategoryId= Themes.SubCategoryId) SubCategoryName,Title,Description,DemoLink,FileSize,PublishDate,LastUpdate,OfficialWebsite,License,ViewsTotal,
 
                                                 DownloadLink,(Select imageName from Themeimage where ImageId=Themes.ImageId) as ImageName,RelatedLink1,RelatedLink2,RelatedLink3,RelatedLink4,RelatedLink5,isnull(IsTrending,0) as IsTrending from Themes join AdvancedTheme on 
 

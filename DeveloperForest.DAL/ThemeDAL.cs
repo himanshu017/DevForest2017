@@ -34,6 +34,12 @@ namespace DeveloperForest.DAL
                 db.AddInParameter(dbCommand, "CreatedBy", DbType.String, model.CreatedBy);
                 db.AddInParameter(dbCommand, "ModifiedBy", DbType.String, model.ModifiedBy);
                 db.AddInParameter(dbCommand, "ImageName", DbType.String, model.ImageName);
+                db.AddInParameter(dbCommand, "FileSize", DbType.String, model.FileSize);
+                db.AddInParameter(dbCommand, "ViewsTotal", DbType.String, model.ViewsTotal);
+                db.AddInParameter(dbCommand, "LastUpdate", DbType.String, model.LastUpdate);
+                db.AddInParameter(dbCommand, "PublishDate", DbType.String, model.PublishDate);
+                db.AddInParameter(dbCommand, "OfficialWebsite", DbType.String, model.OfficialWebsite);
+                db.AddInParameter(dbCommand, "License", DbType.String, model.License);
                 db.AddInParameter(dbCommand, "RelatedLink1", DbType.String, model.RelatedLink1);
                 db.AddInParameter(dbCommand, "RelatedLink2", DbType.String, model.RelatedLink2);
                 db.AddInParameter(dbCommand, "RelatedLink3", DbType.String, model.RelatedLink3);
@@ -72,6 +78,12 @@ namespace DeveloperForest.DAL
                 RelatedLink3 = String.IsNullOrEmpty(row.Field<string>("RelatedLink3")) ? "" : row.Field<string>("RelatedLink3"),
                 RelatedLink4 = String.IsNullOrEmpty(row.Field<string>("RelatedLink4")) ? "" : row.Field<string>("RelatedLink4"),
                 RelatedLink5 = String.IsNullOrEmpty(row.Field<string>("RelatedLink5")) ? "" : row.Field<string>("RelatedLink5"),
+                FileSize = String.IsNullOrEmpty(row.Field<string>("FileSize")) ? "" : row.Field<string>("FileSize"),
+                ViewsTotal = (Int32)row["ViewsTotal"] == null ? 0 : (Int32)row["ViewsTotal"],
+                LastUpdate = String.IsNullOrEmpty(row.Field<string>("LastUpdate")) ? "" : row.Field<string>("LastUpdate"),
+                PublishDate = String.IsNullOrEmpty(row.Field<string>("PublishDate")) ? "" : row.Field<string>("PublishDate"),
+                OfficialWebsite = String.IsNullOrEmpty(row.Field<string>("OfficialWebsite")) ? "" : row.Field<string>("OfficialWebsite"),
+                License = String.IsNullOrEmpty(row.Field<string>("License")) ? "" : row.Field<string>("License"),
                 IsTrending = row.Field<bool>("IsTrending")
             }).ToList();
             return ThemeList;
